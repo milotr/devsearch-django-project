@@ -1,4 +1,10 @@
 {% extends "main.html" %}
 {%block content%}
- <h1>Projects</h1>
+{{message}}
+<h1>Projects</h1>
+<ul>
+    {%for project in projectList%}
+    <li>Name: <a href="{%url 'project' project.id%}">{{project.title}}</a> --- Description: {{project.description}}</li>
+    {%endfor%}
+</ul>
 {%endblock%}
