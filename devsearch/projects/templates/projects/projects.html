@@ -1,23 +1,23 @@
 {% extends "main.html" %}
 {%block content%}
-{{message}}
 <table>
     <tr>
-        <th>ID</th>
         <th>Project</th>
         <th>Votes</th>
         <th>Ratio</th>
         <th>Date created</th>
+        <th></th>
+        <th></th>
     </tr>
     {%for project in projects%}
     <tr>
-        <td>{{project.id}}</td>
         <td><a href="{%url 'project' project.id%}">{{project.title}}</a></td>
         <td>{{project.vote_total}}</td>
         <td>{{project.vote_ratio}}%</td>
         <td>{{project.created}}</td>
+        <td><a href="{%url 'updateProject' project.id%}">Edit</td>
+        <td><a href="{%url 'deleteProject' project.id%}">Delete</td>
     </tr>
-    <li>Name: <a href="{%url 'project' project.id%}">{{project.title}}</a> --- Description: {{project.description}}</li>
     {%endfor%}
 </table>
 <h1>Projects</h1>
