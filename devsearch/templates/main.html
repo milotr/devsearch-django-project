@@ -19,14 +19,23 @@
 </head>
 <body>
     {%include 'navbar.html'%}
-    {% if messages %}
+    {% comment %} {% if messages %}
     <ul class="messages">
         {% for message in messages %}
         <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
         {% endfor %}
-    </ul>
-    {% endif %}
+    </ul> 
+    {% endif %}{% endcomment %}
+    {%if messages%}
+    {%for message in messages%}
+        <div class='alert alert--{{message.tags}}'>
+            <p class='alert__message'>{{message}}</p>
+            <button class='alert__close'>x</button>
+        </div>
+    {%endfor%}
+    {%endif%}
     {%block content%}
     {%endblock%}
 </body>
+<script scr="{%static 'uikit/app.js'%}"></script>
 </html>
